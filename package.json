@@ -1,0 +1,28 @@
+{
+  "name": "employee-catalogue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gwacky/employee-catalogue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gwacky/employee-catalogue/issues"
+  },
+  "homepage": "https://github.com/gwacky/employee-catalogue#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
