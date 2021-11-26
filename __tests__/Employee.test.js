@@ -15,7 +15,7 @@ describe('Employee', () => {
     });
 
     it('can set id', () => {
-        const testValue = 4;
+        const testValue = 100;
         const e = new Employee();
 
         expect(e.id).toBe(testValue);
@@ -39,7 +39,7 @@ describe('Employee', () => {
 
     describe('getId function', () => {
         it('can get id using getId()', () => {
-            const testValue = 4;
+            const testValue = 100;
             const e = new Employee();
 
             expect(e.getId()).toBe(testValue);
