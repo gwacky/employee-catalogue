@@ -16,7 +16,15 @@ function addMember() {
     {
         type: 'input',
         message: "Enter team member's name",
-        name: 'name'
+        name: 'name',
+        validate: nameInput => {
+            if(nameInput) {
+                return true;
+            } else {
+                console.log('Please enter a name!');
+                return false;
+            }
+        }
     },
     {
         type: 'list',
@@ -31,12 +39,28 @@ function addMember() {
     {
         type: 'input',
         message: "Enter team member's ID",
-        name: 'id'
+        name: 'id',
+        validate: idInput => {
+            if(idInput) {
+                return true;
+            } else {
+                console.log('Please enter an ID!');
+                return false;
+            }
+        }
     },
     {
         type: 'input',
         message: "Enter team member's email address",
-        name: 'email'
+        name: 'email',
+        validate: emailInput => {
+            if(emailInput) {
+                return true;
+            } else {
+                console.log('Please enter an email!');
+                return false;
+            }
+        }
     }
     ]).then(function({name, id, email, role}){
         let roleInfo = '';
@@ -51,7 +75,15 @@ function addMember() {
             {
                 type: 'input',
                 message: `Enter team member's ${roleInfo}`,
-                name: 'roleInfo'
+                name: 'roleInfo',
+                validate: roleInput => {
+                    if(roleInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter a role info!');
+                        return false;
+                    }
+                }
             },
             {
                 type: 'list',
@@ -101,7 +133,7 @@ function initHtml() {
         <div class="container">
             <div class="row">
     `;
-    fs.writeFile('teamProfile.html', html, function(err) {
+    fs.writeFile('./dist/teamProfile.html', html, function(err) {
         if (err) {
             console.log(err)
         }
@@ -125,8 +157,8 @@ function addHtml(member) {
                     <h5 class="card-header">${name}<br /><br />Engineer</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
-                        <li class="list-group-item">GitHub: ${gitHub}</li>
+                        <li class="list-group-item">Email Address: <a href='mailto:${email}'>${email}</a></li>
+                        <li class="list-group-item">GitHub: <a href='https://github.com/${gitHub}'>https://github.com/${gitHub}</a></li>
                     </ul>
                 </div>
             </div>
@@ -140,7 +172,7 @@ function addHtml(member) {
                     <h5 class="card-header">${name}<br /><br />Intern</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">Email Address: <a href='mailto:${email}'>${email}</a></li>
                         <li class="list-group-item">School: ${school}</li>
                     </ul>
                 </div>
@@ -156,14 +188,14 @@ function addHtml(member) {
                     <h5 class="card-header">${name}<br /><br />Manager</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${id}</li>
-                        <li class="list-group-item">Email Address: ${email}</li>
+                        <li class="list-group-item">Email Address: <a href='mailto:${email}'>${email}</a></li>
                         <li class="list-group-item">Office Phone: ${officeNumber}</li>
                     </ul>
                 </div>
             </div>
             `
         }
-        fs.appendFile('teamProfile.html', data, function(err) {
+        fs.appendFile('./dist/teamProfile.html', data, function(err) {
             if (err) {
                 return reject(err);
             }
@@ -181,7 +213,7 @@ function finishHtml() {
     </body>
     </html>`;
 
-    fs.appendFile('teamProfile.html', html, function(err) {
+    fs.appendFile('./dist/teamProfile.html', html, function(err) {
         if(err) {
             console.log(err);
         };
